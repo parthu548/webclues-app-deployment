@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cache-deployment
-  namespace: webclues # Use the 'webclues' namespace for this cache deployment
+  namespace: webclues
 spec:
   replicas: 1 # Deploy a single instance of the cache
   selector:
