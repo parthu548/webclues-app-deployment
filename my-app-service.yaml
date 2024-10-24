@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+  namespace: webclues
+spec:
+  selector:
+    app: my-app # Link the service to pods with the label app=my-app
+  ports:
+    - protocol: TCP # Use the TCP protocol for communication
+      port: 80 # External port exposed by the service
+      targetPort: 3000 # Internal port of the app in the container
+  type: ClusterIP # Default service type to expose the app within the cluster only

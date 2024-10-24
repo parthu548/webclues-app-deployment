@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  namespace: webclues
+spec:
+  replicas: 2 # Deploy two instances of the app for redundancy and load balancing
+  selector:
+    matchLabels:
+      app: my-app # This label helps identify the pods for the app
+  template:
+    metadata:
+      labels:
+        app: my-app # Label used to match this deployment with the service
+    spec:
+      containers:
+      - name: my-app
+        image: my-app-image:latest # Replace with your actual application image
+        ports:
+        - containerPort: 3000 # Port on which the application listens inside the container

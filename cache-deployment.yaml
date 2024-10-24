@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache-deployment
+  namespace: webclues # Use the 'webclues' namespace for this cache deployment
+spec:
+  replicas: 1 # Deploy a single instance of the cache
+  selector:
+    matchLabels:
+      app: cache # Label to identify the cache pod
+  template:
+    metadata:
+      labels:
+        app: cache # Label to match this cache deployment
+    spec:
+      containers:
+      - name: cache
+        image: cache-image:latest # Replace with your actual cache image, such as Redis
+        ports:
+        - containerPort: 6379 # Typical port for Redis; change if using another cache
